@@ -8,10 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Data\Items.json">
+    <Compile Remove="Program - Copy.cs" />
+    <Compile Remove="ProgramBup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="All.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Recipes.json">
+    <None Update="Recipes.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
