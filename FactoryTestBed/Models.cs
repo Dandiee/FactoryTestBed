@@ -25,6 +25,10 @@ public sealed class Recipe
 {
     public string Name { get; set; }
     public string DisplayName { get; set; }
+
+    /// <summary>
+    /// Measured in seconds
+    /// </summary>
     public float Duration { get; set; }
     public IReadOnlyCollection<ItemRate> Ingredients { get; set; }
     public IReadOnlyCollection<ItemRate> Products { get; set; }

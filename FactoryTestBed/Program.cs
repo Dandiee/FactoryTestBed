@@ -7,7 +7,7 @@ public static class Program
     public static void Main(string[] args)
     {
         var data = DataProvider.Get();
-        var availableResources = new ItemRate[]
+        var availableResourcesPerMinute = new ItemRate[]
         {
             new (data.GetItem("Desc_Stone_C"), 480),
             new (data.GetItem("Desc_OreIron_C"), 1440),
@@ -24,24 +24,24 @@ public static class Program
             // new (data.GetItem("Desc_Sulfur_C"), 1000),
         };
 
-        Test(data, availableResources, "Desc_IronScrew_C", 23040);
-        Test(data, availableResources, "Desc_Rotor_C", 511.99997f);
-        Test(data, availableResources, "Desc_Computer_C", 37.333336f);
-        Test(data, availableResources, "Desc_ComputerSuper_C", 8.372093f);
+        Test(data, availableResourcesPerMinute, "Desc_IronScrew_C", 23040);
+        Test(data, availableResourcesPerMinute, "Desc_Rotor_C", 511.99997f);
+        Test(data, availableResourcesPerMinute, "Desc_Computer_C", 37.333336f);
+        Test(data, availableResourcesPerMinute, "Desc_ComputerSuper_C", 8.372093f);
     }
 
-    private static float GetBest(Data data, IReadOnlyCollection<ItemRate> availableResources, string itemName, float expectedAmount)
+    private static float GetBest(Data data, IReadOnlyCollection<ItemRate> availableResourcesPerMinute, string itemName, float expectedAmountPerMinute)
     {
         // TODO: improve
         return 42;
     }
 
-    private static void Test(Data data, IReadOnlyCollection<ItemRate> availableResources, string itemName, float expectedAmount)
+    private static void Test(Data data, IReadOnlyCollection<ItemRate> availableResourcesPerMinute, string itemName, float expectedAmountPerMinute)
     {
         var item = data.GetItem(itemName);
         var sw = Stopwatch.StartNew();
-        var best = GetBest(data, availableResources, itemName, expectedAmount);
+        var best = GetBest(data, availableResourcesPerMinute, itemName, expectedAmountPerMinute);
         Console.WriteLine($"{item.DisplayName} took {sw.ElapsedMilliseconds:N0} ms");
-        Debug.Assert(Math.Abs(best - expectedAmount) < 0.001);
+        Debug.Assert(Math.Abs(best - expectedAmountPerMinute) < 0.001);
     }
 }
